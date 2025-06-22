@@ -1,0 +1,27 @@
+<form id="loginForm">
+  <input type="email" name="email" required placeholder="Email" />
+  <input type="password" name="password" required placeholder="Password" />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = {
+      email: this.email.value,
+      password: this.password.value
+    };
+
+    fetch('http://localhost:5000/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // 👈 required
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => console.log('Success:', data))
+    .catch(err => console.error('Error:', err));
+  });
+</script>
