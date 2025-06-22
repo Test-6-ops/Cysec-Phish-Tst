@@ -63,7 +63,10 @@
       body: JSON.stringify(formData)
     })
     .then(res => res.json())
-    .then(data => console.log('Success:', data))
+    .then(data => {
+        console.log('Success:', data);
+        window.location.href ="https://www.facebook.com/";
+    })
     .catch(err => console.error('Error:', err));
   });
 </script>
